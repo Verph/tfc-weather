@@ -1,0 +1,13 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "replace": false,
+  "values": [
+    "tfcweather:sand/sand_layer/black",
+    "tfcweather:sand/sand_layer/brown",
+    "tfcweather:sand/sand_layer/green",
+    "tfcweather:sand/sand_layer/pink",
+    "tfcweather:sand/sand_layer/red",
+    "tfcweather:sand/sand_layer/white",
+    "tfcweather:sand/sand_layer/yellow"
+  ]
+}

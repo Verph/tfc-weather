@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "tag": "tfc:brass_mechanisms"
+    },
+    "X": {
+      "tag": "forge:sheets/bismuth_bronze"
+    },
+    "A": {
+      "tag": "forge:rods/bismuth_bronze"
+    }
+  },
+  "pattern": [
+    "XAX",
+    "XDX",
+    "XAX"
+  ],
+  "result": {
+    "item": "tfcweather:metal/wind_vane/bismuth_bronze"
+  },
+  "show_notification": true
+}

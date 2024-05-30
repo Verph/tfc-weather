@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "tag": "tfc:brass_mechanisms"
+    },
+    "X": {
+      "tag": "forge:sheets/copper"
+    },
+    "A": {
+      "tag": "forge:rods/copper"
+    }
+  },
+  "pattern": [
+    "X X",
+    " D ",
+    "XAX"
+  ],
+  "result": {
+    "item": "tfcweather:metal/anemometer/copper"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,29 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "tfcweather.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins":
+	[
+		"tfc.OverworldClimateModelMixin",
+		"tfc.SandBlockTypeMixin",
+		"tfc.SnowPileBlockMixin",
+		"weather2.ClientWeatherProxyMixin",
+		"weather2.StormObjectMixin",
+		"weather2.TornadoHelperMixin",
+		"weather2.WeatherManagerServerMixin",
+		"weather2.WeatherObjectParticleStormMixin",
+		"weather2.WeatherObjectSandstormOldMixin",
+		"weather2.WeatherUtilBlockMixin"
+	],
+	"client":
+	[
+		"weather2.FogAdjusterMixin",
+		"weather2.SceneEnhancerMixin"
+	],
+	"injectors":
+	{
+		"defaultRequire": 1
+	},
+	"refmap": "tfcweather.refmap.json"
+}

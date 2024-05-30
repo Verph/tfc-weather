@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "tag": "tfc:brass_mechanisms"
+    },
+    "X": {
+      "tag": "forge:sheets/sterling_silver"
+    },
+    "A": {
+      "tag": "forge:rods/sterling_silver"
+    }
+  },
+  "pattern": [
+    "XAX",
+    "XDX",
+    "XAX"
+  ],
+  "result": {
+    "item": "tfcweather:metal/wind_vane/sterling_silver"
+  },
+  "show_notification": true
+}

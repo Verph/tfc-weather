@@ -1,0 +1,11 @@
+{
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "tfcweather:metal/wind_vane/red_steel"
+  },
+  "result_fluid": {
+    "fluid": "tfc:metal/red_steel",
+    "amount": 600
+  },
+  "temperature": 1540
+}

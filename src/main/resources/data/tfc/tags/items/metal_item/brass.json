@@ -1,0 +1,8 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "replace": false,
+  "values": [
+    "tfcweather:metal/anemometer/brass",
+    "tfcweather:metal/wind_vane/brass"
+  ]
+}

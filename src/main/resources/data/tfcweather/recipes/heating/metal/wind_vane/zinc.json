@@ -1,0 +1,11 @@
+{
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "tfcweather:metal/wind_vane/zinc"
+  },
+  "result_fluid": {
+    "fluid": "tfc:metal/zinc",
+    "amount": 600
+  },
+  "temperature": 420
+}

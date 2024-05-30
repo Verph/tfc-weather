@@ -1,0 +1,46 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+license="BSD 3"
+
+[[mods]]
+modId="tfcweather"
+version="${file.jarVersion}"
+displayName="TFC Weather"
+displayURL="https://legacy.curseforge.com/minecraft/mc-mods/tfc-weather"
+authors="Verph"
+description="Bringing weather to TFC."
+
+[[dependencies.tfcweather]]
+    modId = "weather2"
+    mandatory = true
+    versionRange = "[1.20.1-2.8,)"
+    ordering = "AFTER"
+    side = "BOTH"
+
+[[dependencies.tfcweather]]
+    modId = "coroutil"
+    mandatory = true
+    versionRange = "[1.20.1-1,)"
+    ordering = "AFTER"
+    side = "BOTH"
+
+[[dependencies.tfcweather]]
+	mandatory = true
+	modId = "tfc"
+	ordering = "AFTER"
+	side = "BOTH"
+	versionRange = "[1.20.1-3,)"
+	
+[[dependencies.tfcweather]]
+    modId = "forge"
+    mandatory = true
+    versionRange = "[0,)"
+    ordering = "AFTER"
+    side = "BOTH"
+
+[[dependencies.tfcweather]]
+    modId = "minecraft"
+    mandatory = true
+    versionRange = "[1.20.1,1.20.2)"
+    ordering = "NONE"
+    side = "BOTH"

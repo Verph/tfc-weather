@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "tag": "tfc:brass_mechanisms"
+    },
+    "X": {
+      "tag": "forge:sheets/tin"
+    },
+    "A": {
+      "tag": "forge:rods/tin"
+    }
+  },
+  "pattern": [
+    "XAX",
+    "XDX",
+    "XAX"
+  ],
+  "result": {
+    "item": "tfcweather:metal/wind_vane/tin"
+  },
+  "show_notification": true
+}

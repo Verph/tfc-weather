@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "tag": "tfc:brass_mechanisms"
+    },
+    "X": {
+      "tag": "forge:sheets/red_steel"
+    },
+    "A": {
+      "tag": "forge:rods/red_steel"
+    }
+  },
+  "pattern": [
+    "X X",
+    " D ",
+    "XAX"
+  ],
+  "result": {
+    "item": "tfcweather:metal/anemometer/red_steel"
+  },
+  "show_notification": true
+}

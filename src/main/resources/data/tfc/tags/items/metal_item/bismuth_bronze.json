@@ -1,0 +1,8 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "replace": false,
+  "values": [
+    "tfcweather:metal/anemometer/bismuth_bronze",
+    "tfcweather:metal/wind_vane/bismuth_bronze"
+  ]
+}

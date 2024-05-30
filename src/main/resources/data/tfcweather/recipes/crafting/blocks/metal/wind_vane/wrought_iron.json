@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "tag": "tfc:brass_mechanisms"
+    },
+    "X": {
+      "tag": "forge:sheets/wrought_iron"
+    },
+    "A": {
+      "tag": "forge:rods/wrought_iron"
+    }
+  },
+  "pattern": [
+    "XAX",
+    "XDX",
+    "XAX"
+  ],
+  "result": {
+    "item": "tfcweather:metal/wind_vane/wrought_iron"
+  },
+  "show_notification": true
+}

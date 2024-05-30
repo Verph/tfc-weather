@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "layers=1":  { "model": "tfcweather:block/sand/sand_layer/2/yellow" },
+        "layers=2":  { "model": "tfcweather:block/sand/sand_layer/4/yellow" },
+        "layers=3":  { "model": "tfcweather:block/sand/sand_layer/6/yellow" },
+        "layers=4":  { "model": "tfcweather:block/sand/sand_layer/8/yellow" },
+        "layers=5":  { "model": "tfcweather:block/sand/sand_layer/10/yellow" },
+        "layers=6":  { "model": "tfcweather:block/sand/sand_layer/12/yellow" },
+        "layers=7":  { "model": "tfcweather:block/sand/sand_layer/14/yellow" },
+        "layers=8":  { "model": "tfc:block/sand/yellow" }
+    }
+}

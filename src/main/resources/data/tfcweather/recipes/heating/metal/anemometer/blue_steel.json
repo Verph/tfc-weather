@@ -1,0 +1,11 @@
+{
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "tfcweather:metal/anemometer/blue_steel"
+  },
+  "result_fluid": {
+    "fluid": "tfc:metal/blue_steel",
+    "amount": 400
+  },
+  "temperature": 1540
+}

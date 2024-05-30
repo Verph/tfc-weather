@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "tag": "tfc:brass_mechanisms"
+    },
+    "X": {
+      "tag": "forge:sheets/bismuth_bronze"
+    },
+    "A": {
+      "tag": "forge:rods/bismuth_bronze"
+    }
+  },
+  "pattern": [
+    "X X",
+    " D ",
+    "XAX"
+  ],
+  "result": {
+    "item": "tfcweather:metal/anemometer/bismuth_bronze"
+  },
+  "show_notification": true
+}

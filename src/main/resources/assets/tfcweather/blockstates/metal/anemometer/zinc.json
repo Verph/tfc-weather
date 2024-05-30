@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "tfcweather:block/metal/anemometer/zinc"
+    }
+  }
+}
