@@ -31,7 +31,7 @@ public class OverworldClimateModelMixin
         {
             final Vec3 vec3Pos = new Vec3(pos.getX(), pos.getY(), pos.getZ());
             final float intensity = WindReader.getWindSpeed(level, pos);
-            final float angle = WindReader.getWindAngle(level, vec3Pos) * Mth.PI / 180;
+            final float angle = WindReader.getWindAngle(level, vec3Pos); // In degrees
             return new Vec2(Mth.cos(angle), Mth.sin(angle)).scale(intensity);
         }
         else
