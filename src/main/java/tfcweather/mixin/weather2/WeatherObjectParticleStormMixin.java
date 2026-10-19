@@ -66,15 +66,9 @@ public class WeatherObjectParticleStormMixin extends WeatherObject
 		}
 		else if (type == StormType.SNOWSTORM)
 		{
-			return (isColdForStorm(level, biomeIn, pos) || temperature <= TFCWeatherConfig.COMMON.snowstormMaxTemp.get()) && !TFCWeatherHelpers.isBiome(biomeIn, TFCWeatherTags.Biomes.IS_OCEANIC);
+			return temperature <= TFCWeatherConfig.COMMON.snowstormMaxTemp.get() && !TFCWeatherHelpers.isBiome(biomeIn, TFCWeatherTags.Biomes.IS_OCEANIC);
 		}
 		return false;
-	}
-
-    @Unique
-	private static boolean isColdForStorm(Level world, Biome biome, BlockPos pos)
-	{
-		return biome.getPrecipitationAt(pos) == Biome.Precipitation.RAIN || biome.getPrecipitationAt(pos) == Biome.Precipitation.SNOW;
 	}
 
 	@Shadow

@@ -31,6 +31,7 @@ import net.dries007.tfc.util.EnvironmentHelpers;
 import net.dries007.tfc.util.climate.Climate;
 import tfcweather.common.TFCWeatherTags;
 import tfcweather.common.blocks.SandLayerBlock;
+import tfcweather.config.TFCWeatherConfig;
 import tfcweather.util.TFCWeatherHelpers;
 
 @Mixin(WeatherUtilBlock.class)
@@ -325,6 +326,7 @@ public class WeatherUtilBlockMixin
 		//BlockState placeState = setBlockWithLayerState(world, pos, block, height);
 		if (block instanceof SnowPileBlock || block instanceof SnowLayerBlock)
 		{
+			if (Climate.getTemperature(world, pos) > TFCWeatherConfig.COMMON.snowstormMaxTemp.get()) return;
 			TFCWeatherHelpers.placeSnowPile(world, pos, world.getBlockState(pos), height);
 		}
 		else if (block instanceof SandLayerBlock)

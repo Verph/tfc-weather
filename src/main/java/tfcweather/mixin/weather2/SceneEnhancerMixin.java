@@ -59,7 +59,6 @@ import net.dries007.tfc.util.climate.Climate;
 
 import com.corosus.coroutil.util.CULog;
 import com.corosus.coroutil.util.CoroUtilBlock;
-import com.corosus.coroutil.util.CoroUtilCompatibility;
 import com.corosus.coroutil.util.CoroUtilMisc;
 
 import tfcweather.common.TFCWeatherTags;
@@ -96,7 +95,7 @@ public abstract class SceneEnhancerMixin
 
 		Player entP = Minecraft.getInstance().player;
 		WeatherManagerClient weatherMan = ClientTickHandler.weatherManager;
-		if (weatherMan == null) return;
+		if (entP == null || weatherMan == null) return;
 		WindManager windMan = weatherMan.getWindManager();
 		if (windMan == null) return;
 		if (particleBehavior == null) return;
@@ -227,7 +226,7 @@ public abstract class SceneEnhancerMixin
 			}
 		}
 
-		if (biome != null && (biome.getPrecipitationAt(posPlayer) != Biome.Precipitation.NONE))
+		if (canPrecip)
 		{
 			if (curPrecipVal > 0)
 			{
@@ -697,14 +696,10 @@ public abstract class SceneEnhancerMixin
 
 		Minecraft minecraft = Minecraft.getInstance();
 		Player player = Minecraft.getInstance().player;
-		final double snowstormMaxTemp = TFCWeatherConfig.COMMON.snowstormMaxTemp.get();
-		final double sandstormMaxRainfall = TFCWeatherConfig.COMMON.sandstormMaxRainfall.get();
+		if (player == null || minecraft.level == null || ModList.get().isLoaded("tfcbarrens")) return;
 
 		float precipitationStrength = ClientWeatherHelper.get().getPrecipitationStrength(player);
-		float temperature = Climate.getTemperature(player.level(), player.blockPosition());
-		float rainfall = Climate.getRainfall(player.level(), player.blockPosition());
-
-		if (!(precipitationStrength <= 0.0F) && !shouldSnowHere(player.level(), player.level().getBiome(player.blockPosition()).value(), player.blockPosition()) && temperature > snowstormMaxTemp && rainfall > sandstormMaxRainfall)
+		if (precipitationStrength > 0.0F && shouldRainHere(player.level(), player.level().getBiome(player.blockPosition()).value(), player.blockPosition()))
 		{
 			Random random = new Random(player.level().getGameTime() * 312987231L);
 			LevelReader levelreader = minecraft.level;
@@ -719,7 +714,7 @@ public abstract class SceneEnhancerMixin
 				int l = random.nextInt(21) - 10;
 				BlockPos blockpos2 = levelreader.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, blockpos.offset(k, 0, l));
 				Biome biome = levelreader.getBiome(blockpos2).value();
-				if (blockpos2.getY() > levelreader.getMinBuildHeight() && blockpos2.getY() <= blockpos.getY() + 10 && blockpos2.getY() >= blockpos.getY() - 10 && biome.getPrecipitationAt(blockpos2) == Biome.Precipitation.RAIN && biome.warmEnoughToRain(blockpos2))
+				if (blockpos2.getY() > levelreader.getMinBuildHeight() && blockpos2.getY() <= blockpos.getY() + 10 && blockpos2.getY() >= blockpos.getY() - 10 && shouldRainHere(level, biome, blockpos2))
 				{
 					blockpos1 = blockpos2.below();
 					if (minecraft.options.particles.get() == ParticleStatus.MINIMAL)
@@ -792,13 +787,13 @@ public abstract class SceneEnhancerMixin
     @Overwrite(remap = false)
 	public static boolean shouldRainHere(Level level, Biome biome, BlockPos pos)
 	{
-		return CoroUtilCompatibility.warmEnoughToRain(biome, pos, level) && Climate.getRainfall(level, pos) > TFCWeatherConfig.COMMON.snowstormMaxTemp.get();
+		return Climate.getTemperature(level, pos) > TFCWeatherConfig.COMMON.snowstormMaxTemp.get() && Climate.getRainfall(level, pos) > TFCWeatherConfig.COMMON.sandstormMaxRainfall.get();
 	}
 
     @Overwrite(remap = false)
 	public static boolean shouldSnowHere(Level level, Biome biome, BlockPos pos)
 	{
-		return CoroUtilCompatibility.coldEnoughToSnow(biome, pos, level) && Climate.getTemperature(level, pos) < TFCWeatherConfig.COMMON.sandstormMaxRainfall.get();
+		return Climate.getTemperature(level, pos) <= TFCWeatherConfig.COMMON.snowstormMaxTemp.get() && Climate.getRainfall(level, pos) > TFCWeatherConfig.COMMON.sandstormMaxRainfall.get();
 	}
 
     @Shadow

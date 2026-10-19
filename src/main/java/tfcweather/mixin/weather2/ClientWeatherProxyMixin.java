@@ -3,8 +3,9 @@ package tfcweather.mixin.weather2;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
-
-import com.corosus.coroutil.util.CoroUtilBlock;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -18,7 +19,6 @@ import weather2.datatypes.PrecipitationType;
 import weather2.ltcompat.ClientWeatherIntegration;
 
 import net.dries007.tfc.util.climate.Climate;
-import net.dries007.tfc.util.climate.OverworldClimateModel;
 
 import tfcweather.config.TFCWeatherConfig;
 
@@ -42,21 +42,26 @@ public class ClientWeatherProxyMixin
 			Minecraft client = Minecraft.getInstance();
 			Player player = client.player;
 
-            float temperature = 0F;
-            float rainfall = 100F;
-			if (player != null)
-			{
-            	Level level = player.level();
-                BlockPos pos = CoroUtilBlock.blockPos(player.getX(), 0, player.getZ());
-                temperature = Climate.getTemperature(level, pos);
-                rainfall = Climate.getRainfall(level, pos);
-            }
-
-			if (biome == null) return null;
-			if (temperature > OverworldClimateModel.SNOW_FREEZE_TEMPERATURE) return PrecipitationType.NORMAL;
-			if (temperature <= OverworldClimateModel.SNOW_FREEZE_TEMPERATURE) return PrecipitationType.SNOW;
+			if (player == null || biome == null) return null;
+			Level level = player.level();
+			BlockPos pos = player.blockPosition();
+			float temperature = Climate.getTemperature(level, pos);
+			float rainfall = Climate.getRainfall(level, pos);
 			if (rainfall <= TFCWeatherConfig.COMMON.sandstormMaxRainfall.get()) return null;
+			return temperature <= TFCWeatherConfig.COMMON.snowstormMaxTemp.get() ? PrecipitationType.SNOW : PrecipitationType.NORMAL;
 		}
-		return null;
+	}
+
+	@Inject(method = "isSnowstorm", at = @At("RETURN"), cancellable = true, remap = false)
+	private void restrictSnowstormToColdClimate(CallbackInfoReturnable<Boolean> cir)
+	{
+		if (cir.getReturnValueZ() && !Weather.isLoveTropicsInstalled())
+		{
+			Player player = Minecraft.getInstance().player;
+			if (player == null || ModList.get().isLoaded("tfcbarrens") || Climate.getTemperature(player.level(), player.blockPosition()) > TFCWeatherConfig.COMMON.snowstormMaxTemp.get())
+			{
+				cir.setReturnValue(false);
+			}
+		}
 	}
 }
